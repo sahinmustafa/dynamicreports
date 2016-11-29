@@ -1,2 +1,7 @@
 /build/
 /target/
+/.settings/
+/.externalToolBuilders/
+.DS_Stroe
+.project
+/WebContent/ext-4.2.1.883/
