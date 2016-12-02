@@ -1,27 +1,33 @@
 Ext.define('app.view.report.VReport', {
-	extend : 'Ext.panel.Panel',
+	extend : 'Ext.form.Panel',
 	alias : 'widget.report',
 	title : 'Rapor',
+	
 	requires : ['app.view.report.VReportFieldTree',
-	            'app.view.report.VReportFieldProperties'],
+	            'app.view.report.VReportFieldProperties',
+	            'app.view.report.VReportTable'
+	            ],
 	
 	layout: {
 	    type: 'hbox',       
 	    align: 'stretch'
 	    	
 	},
-	
-	items : [{
-		xtype : 'reportFieldTree',
-		flex : 1
+	initComponent : function(){
+		this.items = [{
+			xtype : 'reportFieldTree',
+			id : 'reportFieldTree',
+			flex : 1
+			
+		},{
+			xtype : 'reportTable',
+			flex : 5			
+		},{
+			xtype : 'reportFieldProperties',
+			flex : 1
+		}];
 		
-	},{
-		xtype : 'grid',
-		columns: [],
-		flex : 5
-	},{
-		xtype : 'reportFieldProperties',
-		flex : 1
-	}]
-	
+		this.callParent();
+	}
+		
 });

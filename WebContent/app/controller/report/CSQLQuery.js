@@ -2,7 +2,7 @@ Ext.define('app.controller.report.CSQLQuery', {
 	extend : 'app.controller.CBaseController',
 	views : ['report.VSQLQuery'],
 	models : ['MSQLQuery'],
-	
+
 	refs : [{
 		selector : 'sqlQuery',
 		ref : 'sqlQuery'
@@ -20,7 +20,7 @@ Ext.define('app.controller.report.CSQLQuery', {
 	
 	tamamClick : function(){
 		var sql = this.getSqlQuery().down('field[name=sqlQuery]').getValue();
-		
+		this.sqlParser(sql);
 	},
 	
 	temizleClick : function(){
@@ -38,6 +38,7 @@ Ext.define('app.controller.report.CSQLQuery', {
 	},
 	
 	sqlParser : function(sql){
+		/*
 		if(sql == null)
 			return [];
 		
@@ -51,8 +52,12 @@ Ext.define('app.controller.report.CSQLQuery', {
 		var selectedList = selectedSrting.split(','); // her bir seleceted field listeye alındı
 		
 		var whereIndex = sql.indexOf('where');
+		var tableNames = "";
 		var whereClause = [];
-		if(whereIndex != -1){
+		if(whereIndex == -1){
+			tableNames = sql.substring(fromIndexIndex + 5);
+		}else{
+			tableNames = sql.substring(fromIndexIndex + 5, whereIndex);
 			
 		}
 		
@@ -62,6 +67,48 @@ Ext.define('app.controller.report.CSQLQuery', {
 		for(var i = 0 ; i < selectedList.length ; i ++){
 			
 		}
+		*/
+		var dumpy = {
+				children: [{ 
+			        text: "Kolonlar", 
+			        expanded: true, 
+			        leaf: false, 
+			        checked: false, 
+			        children: [{ 
+				        	text: "tc", 
+				        	leaf: true, 
+				        	checked: true
+			        	},{ 
+			        		text: "ad", 
+			        		leaf: true, 
+			        		checked: true 
+		        		},{ 
+			        		text: "soyad", 
+			        		leaf: true, 
+			        		checked: true 
+		        		},{ 
+			        		text: "dogumTarihi", 
+			        		leaf: true, 
+			        		checked: true 
+		        		}]
+					},{ 
+			            text: "Arama Kriterleri", 
+			            expanded: true, 
+			            leaf: false, 
+			            checked: false, 
+			            children: [{ 
+				            	text: "tc", 
+				            	leaf: true, 
+				            	checked: false
+			            	},{ 
+			            		text: "dogumTarihi", 
+			            		leaf: true, 
+			            		checked: false
+		            		}]
+		            }]
+		};
 		
+		//var store = this.getReportFieldTree().getStore();
+		debugger;
 	}
 });

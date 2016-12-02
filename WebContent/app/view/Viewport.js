@@ -1,5 +1,6 @@
 Ext.define('app.view.Viewport', {
 	extend : 'Ext.Viewport',
+	enableTabScroll : true,
 	layout : {
 		type : 'border',
 		collapsible: true

@@ -6,6 +6,7 @@ Ext.application({
 	               'CMainFrame', 
 	               'report.CSQLQuery',
 	               'menu.CAnaMenu',
-	               'project.CProject'],
+	               'project.CProject',
+	               'report.CReportFieldTree'],
 	autoCreateViewport : true
 });

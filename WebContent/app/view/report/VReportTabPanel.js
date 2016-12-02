@@ -9,9 +9,6 @@ Ext.define('app.view.report.VReportTabPanel', {
 	            ],
 	            
 	items : [{
-		xtype : 'sqlQuery',
-		title : 'Rapor SQL Sorgusu'
-	}, {
 		xtype : 'report',
 		title : 'Rapor'
 	}, {
