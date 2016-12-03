@@ -29,10 +29,10 @@ Ext.define('app.controller.report.CReportFieldTree', {
 	                click : this.collapseAll   
 	          },
 	          'reportTable' : {
-	        	  afterrender : this.afterRenderReportTable,
-	        	  drop : this.onDrop
+	        	  afterrender : this.afterRenderReportTable
 	          }
          });
+		 
      },
 
      reportRender : function(){
@@ -45,15 +45,21 @@ Ext.define('app.controller.report.CReportFieldTree', {
      },
      
      collapseAll : function() { 
-    	 
-         var myTree = this.getProjectTree();
-         myTree.collapseAll();
+    	 debugger;
+    	 Ext.getCmp('mainFrame').doComponentLayout()
+         //var myTree = this.getProjectTree();
+         //myTree.collapseAll();
      },
      
      afterRenderReportTable : function(view, record) {
-    	 view.view.on('drop',this.onDrop,this);         
+    	 view.view.on('drop',this.onDrop,this);  
+    	 view.view.on('afterDrop', this.afterDrop, this);
      },
-   
+     
+     afterDrop : function(view, record){
+    	debugger; 
+     },
+        
      onDrop : function(view,record){
     	var grid = Ext.ComponentQuery.query('report gridpanel')[0];
     	var items = view.getDragData(record.event).records;
@@ -63,13 +69,15 @@ Ext.define('app.controller.report.CReportFieldTree', {
     	
     	for(var i = 0 ; i < items.length ; i ++){
 	    	var column = Ext.create('Ext.grid.column.Column', {
-	    		text : items[i].data.text    		
+	    		text : items[i].data.text,
+	    		flex : 1,
+	    		autoSizeColumn : true
 	    	});
 	    	grid.headerCt.insert(grid.columns.length - 1, column);
     	}
     	
-        grid.getView().refresh();
-        debugger;
+        grid.getView().refresh(true);
+        
      },
     
      sqlParser : function(){

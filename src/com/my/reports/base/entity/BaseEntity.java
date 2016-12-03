@@ -17,6 +17,7 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.json.JSONObject;
 
+import com.my.reports.base.dao.definitions.IBaseDao;
 import com.my.reports.base.enums.Status;
 import com.my.reports.utility.EntityUtility;
 
@@ -52,6 +53,12 @@ public abstract class BaseEntity implements Serializable{
 	@Column(name="UPDATE_USER", nullable=true, updatable=false)
 	private String updateUser;
 	
+	
+	public abstract void entityKaydet(BaseEntity parent, IBaseDao dao);
+	public abstract void entityGuncelle(BaseEntity parent, IBaseDao dao);
+	public abstract void entitySil(BaseEntity parent, IBaseDao dao);
+	public abstract void altSinifGetir(BaseEntity parent, IBaseDao dao);
+	public abstract void ustSinifGetir(BaseEntity parent, IBaseDao dao);
 	
 	public BaseEntity fromJSON(Class<? extends BaseEntity> clazz, JSONObject json) throws Exception{
 		return new ObjectMapper().readValue(json.toString(), clazz);

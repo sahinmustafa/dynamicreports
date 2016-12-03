@@ -1,6 +1,6 @@
 Ext.define('app.view.MainFrame',{
     extend : 'Ext.tab.Panel',
-    xtype : 'basic-tabs', 
+    id : 'mainFrame',
     alias : 'widget.centerTabPanel',
     
     defaults: {
@@ -10,6 +10,7 @@ Ext.define('app.view.MainFrame',{
     requires : ['app.view.report.VReportTabPanel'],
     items : [{
     	xtype : 'reportTabPanel',
+    	title : 'rapor',
     	closable : true
     }]
 });

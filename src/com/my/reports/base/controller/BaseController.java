@@ -5,8 +5,11 @@ package com.my.reports.base.controller;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.my.reports.base.entity.BaseEntity;
@@ -32,8 +35,8 @@ public class BaseController {
 		BaseService baseService = getServiceClass(serviceName);
 		Method serviceMethod = getServiceMethod(baseService.getClass(), serviceName);
 		Object[] methodParams = getMethodParams(serviceMethod, params);
-		JSONObject returnResult = (JSONObject) serviceMethod.invoke(baseService, methodParams);
-		return returnResult;
+		Object returnResult = (JSONObject) serviceMethod.invoke(baseService, methodParams);
+		return formattedReturnValue(returnResult);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -107,5 +110,33 @@ public class BaseController {
 		}
 		
 		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private JSONObject formattedReturnValue(Object o) throws JSONException, Exception{
+		JSONObject returnValue = new JSONObject();
+		if(o == null) 
+			returnValue.put("data", o);		
+		else if(o instanceof BaseEntity){
+			BaseEntity newO = (BaseEntity) o;
+			returnValue.put("data", newO.toJSON());
+		}
+		else if(o instanceof List){
+			List<Object> list = (List<Object>) o;
+			JSONArray arr = new JSONArray();
+			if(list.size() > 0){
+				if(list.get(0) instanceof BaseEntity){
+					for(int i = 0 ; i < list.size() ; i++)
+						arr.put( ((BaseEntity)list.get(i)).toJSON() );
+				}else
+					arr = new JSONArray(list);
+			}
+			returnValue.put("data", arr);
+		}
+		else{
+			returnValue.put("data", o);
+		}	
+		
+		return returnValue;
 	}
 }

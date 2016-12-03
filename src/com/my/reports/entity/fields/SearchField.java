@@ -1,24 +1,45 @@
 /**
  * 
  */
-package com.my.reports.entity.projects;
+package com.my.reports.entity.fields;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import com.my.reports.base.dao.definitions.IBaseDao;
 import com.my.reports.base.entity.BaseEntity;
+import com.my.reports.utility.EntityUtility;
 
 /**
  * @author MustafaS.
  *
  */
-public class DatabaseSettings extends BaseEntity{
+@Entity
+@Table(name="SEARCH_FIELD")
+public class SearchField extends ReportFields{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="IS_REQUIRED", nullable=false, length=EntityUtility.BOOLEAN_ALAN_UZUNLUGU)
+	private int isRequired;
+	
+	@Column(name="IS_BETWEEN", nullable=false, length=EntityUtility.BOOLEAN_ALAN_UZUNLUGU)
+	private int isBetween;
+	
+	@Column(name="DEFAULT_VALUE", nullable=true, length=EntityUtility.TEXT_ALAN_UZUNLUGU)
+	private String defaultValue;
 
 	/* (non-Javadoc)
 	 * @see com.my.reports.base.entity.BaseEntity#entityKaydet(com.my.reports.base.entity.BaseEntity, com.my.reports.base.dao.definitions.IBaseDao)
 	 */
 	@Override
 	public void entityKaydet(BaseEntity parent, IBaseDao dao) {
-		// TODO Auto-generated method stub
-		
+		this.setReportOid(parent.getOid());
+		dao.save(this);
 	}
 
 	/* (non-Javadoc)
@@ -56,5 +77,30 @@ public class DatabaseSettings extends BaseEntity{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public int getIsRequired() {
+		return isRequired;
+	}
 
+	public void setIsRequired(int isRequired) {
+		this.isRequired = isRequired;
+	}
+
+	public int getIsBetween() {
+		return isBetween;
+	}
+
+	public void setIsBetween(int isBetween) {
+		this.isBetween = isBetween;
+	}
+
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
+	}
+	
+	
 }

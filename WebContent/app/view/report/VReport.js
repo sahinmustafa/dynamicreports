@@ -1,8 +1,8 @@
 Ext.define('app.view.report.VReport', {
-	extend : 'Ext.form.Panel',
+	extend : 'Ext.container.Container',
+	id : 'report',
 	alias : 'widget.report',
 	title : 'Rapor',
-	
 	requires : ['app.view.report.VReportFieldTree',
 	            'app.view.report.VReportFieldProperties',
 	            'app.view.report.VReportTable'
@@ -17,7 +17,8 @@ Ext.define('app.view.report.VReport', {
 		this.items = [{
 			xtype : 'reportFieldTree',
 			id : 'reportFieldTree',
-			flex : 1
+			flex : 1,
+			
 			
 		},{
 			xtype : 'reportTable',

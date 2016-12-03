@@ -1,10 +1,8 @@
 Ext.define('app.view.Viewport', {
 	extend : 'Ext.Viewport',
-	enableTabScroll : true,
-	layout : {
-		type : 'border',
-		collapsible: true
-	},
+	layout : 'border',
+	renderTo : Ext.getBody(),
+	
 	requires : ['app.view.MainFrame',
 	            'app.view.menu.VAnaMenu'],
 	initComponent : function(){
@@ -14,11 +12,10 @@ Ext.define('app.view.Viewport', {
                 region : 'center',
                 layout : 'anchor',
                 items : [{
-                                xtype : 'anaMenu',
-                                width : '100%'
+                                xtype : 'anaMenu'
                             },{
                                 xtype : 'centerTabPanel',
-                                anchor : '100% 100'
+                                anchor : '100% 95%'
                             }]
 			}]
 		});

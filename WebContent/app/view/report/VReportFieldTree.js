@@ -1,18 +1,13 @@
 Ext.define('app.view.report.VReportFieldTree', {
 	extend : 'Ext.tree.Panel',
-    xtype: 'tree-reorder',
 	alias  : 'widget.reportFieldTree',
 	store : 'app.store.report.SReportFieldTree',
-	useArrows : true,
-	draggable  : true,
-	
-	requeires : ['Ext.dd.DropTarget'],
-	
+	renderTo : document.body,
 	viewConfig: {
 		stripeRows:true,
         plugins: {
             ptype: 'treeviewdragdrop',
-        	ddGroup : 'fieldDragGroup'
+        	ddGroup : 'fieldDragGroup',
         }, copy : true
     },
 	dockedItems: [{

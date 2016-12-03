@@ -14,5 +14,5 @@ import com.my.reports.base.dao.definitions.IBaseDao;
 
 public abstract class BaseService {
 
-	@Autowired private IBaseDao dao;
+	@Autowired public IBaseDao dao;
 }

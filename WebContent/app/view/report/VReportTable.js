@@ -1,13 +1,20 @@
 Ext.define('app.view.report.VReportTable', {
 	extend : 'Ext.grid.Panel',
+	id : 'reportTable',
 	alias : 'widget.reportTable',
-	columns : [],
-	enableDragDrop  : true,
+	
+	columns : [{
+		header : 'ID',
+		dataIndex : 'id',
+		flex : 1
+		
+	}],
 	viewConfig: {
-		stripeRows:true,
+		stripeRows:false,
         plugins: {
             ptype: 'gridviewdragdrop',
-            ddGroup : 'fieldDragGroup'
+            ddGroup : 'fieldDragGroup',
+            enableDrag : false,
         }
 	}
 });
