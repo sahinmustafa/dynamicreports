@@ -6,11 +6,13 @@ package com.my.reports.entity.reports;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.my.reports.base.dao.definitions.IBaseDao;
 import com.my.reports.base.entity.BaseEntity;
-import com.my.reports.base.enums.ParentType;
+import com.my.reports.entity.enums.ParentType;
 import com.my.reports.entity.fields.ColumnField;
 import com.my.reports.entity.fields.SearchField;
 import com.my.reports.utility.DataUtility;
@@ -20,6 +22,8 @@ import com.my.reports.utility.EntityUtility;
  * @author MustafaS.
  *
  */
+@Entity
+@Table(name="REPORT_TEMPLATE")
 public class ReportTemplate extends BaseEntity{
 
 	/**

@@ -10,7 +10,7 @@ import javax.persistence.Transient;
 
 import com.my.reports.base.dao.definitions.IBaseDao;
 import com.my.reports.base.entity.BaseEntity;
-import com.my.reports.base.enums.ParentType;
+import com.my.reports.entity.enums.ParentType;
 import com.my.reports.entity.reports.ReportFontStyle;
 import com.my.reports.utility.EntityUtility;
 
@@ -22,12 +22,8 @@ import com.my.reports.utility.EntityUtility;
 @Table(name="COLUMN_FIELD")
 public class ColumnField extends ReportFields{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5248756874784287342L;
 
-	
 	@Column(name="IS_INCLUDED", nullable=false, length=EntityUtility.BOOLEAN_ALAN_UZUNLUGU)
 	private int isIncluded;
 	

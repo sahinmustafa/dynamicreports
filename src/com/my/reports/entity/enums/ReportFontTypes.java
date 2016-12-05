@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.my.reports.base.enums;
+package com.my.reports.entity.enums;
+
+import com.my.reports.base.enums.definitions.INumericEnumType;
 
 /**
  * @author MustafaS.

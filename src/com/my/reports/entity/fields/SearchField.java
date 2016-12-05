@@ -19,10 +19,7 @@ import com.my.reports.utility.EntityUtility;
 @Table(name="SEARCH_FIELD")
 public class SearchField extends ReportFields{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -456482301115353369L;
 
 	@Column(name="IS_REQUIRED", nullable=false, length=EntityUtility.BOOLEAN_ALAN_UZUNLUGU)
 	private int isRequired;

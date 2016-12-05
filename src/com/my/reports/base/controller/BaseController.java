@@ -11,21 +11,23 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
 import com.my.reports.base.entity.BaseEntity;
 import com.my.reports.base.service.BaseService;
-import com.my.reports.base.spring.utils.ApplicationStartupListener;
+import com.my.reports.base.spring.ApplicationStartupListener;
 import com.my.reports.utility.DataUtility;
 
 /**
  * @author MustafaS.
  *
  */
+@Component
 public class BaseController {
 	private static final Logger LOGGER = Logger.getLogger(BaseController.class);
 
 	
-	protected JSONObject callService(String serviceName, JSONObject params) throws Exception{
+	public JSONObject callService(String serviceName, JSONObject params) throws Exception{
 		LOGGER.info(serviceName + " isimli servis çağrıldı.");
 		if(DataUtility.isNullOrEmpty(serviceName) || !serviceName.contains("_")){
 			LOGGER.error("Geçersiz servis adı");
@@ -104,6 +106,8 @@ public class BaseController {
 			return params.getLong(paramName);
 		else if(paramType.equals(boolean.class) || paramType.equals(Boolean.class))
 			return params.getBoolean(paramName);
+		else if(paramType.equals(Class.class))
+			return (Class<?>) params.get(paramName);
 		else if(paramType.getSuperclass().equals(BaseEntity.class)){
 			BaseEntity entity = (BaseEntity) paramType.newInstance();
 			return entity.fromJSON((Class<? extends BaseEntity>)paramType, params.getJSONObject(paramName));

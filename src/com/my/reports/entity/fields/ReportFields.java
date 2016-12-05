@@ -10,7 +10,7 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 
 import com.my.reports.base.entity.BaseEntity;
-import com.my.reports.base.enums.FieldType;
+import com.my.reports.entity.enums.FieldType;
 import com.my.reports.utility.EntityUtility;
 
 /**
@@ -20,11 +20,9 @@ import com.my.reports.utility.EntityUtility;
 @MappedSuperclass
 public abstract class ReportFields extends BaseEntity{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = -8474872538484484288L;
+
 	@Column(name="REPORT_OID", nullable=false, length=EntityUtility.OID_UZUNLUGU)
 	private String reportOid;
 	

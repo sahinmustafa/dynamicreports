@@ -1,4 +1,4 @@
-package com.my.reports.base.spring.utils;
+package com.my.reports.base.spring;
 
 import java.util.Properties;
 

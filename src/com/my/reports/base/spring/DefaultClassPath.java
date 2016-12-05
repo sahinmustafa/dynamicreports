@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.my.reports.base.spring.config;
+package com.my.reports.base.spring;
 
 /**
  * @author MustafaS.

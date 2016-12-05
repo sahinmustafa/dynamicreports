@@ -1,4 +1,4 @@
-package com.my.reports.base.spring.config;
+package com.my.reports.base.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,8 +8,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import com.my.reports.base.spring.utils.DatabaseConfig;
 
 /**
  * @author MustafaS.

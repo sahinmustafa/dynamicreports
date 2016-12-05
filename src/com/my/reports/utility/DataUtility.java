@@ -16,7 +16,18 @@ public class DataUtility {
 		return s != null ? s.length() == 0 : true; 
 	}
 	
-	public static boolean isNullOrEmpty(List list){
+	public static boolean isNullOrEmpty(String s, boolean throwable) throws Exception{
+		return isNullOrEmpty(s, throwable, "Boş değer");
+	}
+	
+	public static boolean isNullOrEmpty(String s, boolean throwable, String message) throws Exception{
+		if(throwable && isNullOrEmpty(s))
+			throw new Exception(message);
+		
+		return isNullOrEmpty(s);
+	}
+	
+	public static boolean isNullOrEmpty(List<?> list){
 		return list != null ? list.size() == 0 : true;
 	}
 	

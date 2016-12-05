@@ -3,6 +3,8 @@
  */
 package com.my.reports.base.enums;
 
+import com.my.reports.base.enums.definitions.INumericEnumType;
+
 /**
  * @author MustafaS.
  *

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.my.reports.base.enums;
+package com.my.reports.base.enums.definitions;
 
 import org.codehaus.jackson.annotate.JsonValue;
 

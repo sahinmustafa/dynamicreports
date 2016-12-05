@@ -15,7 +15,7 @@ import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.usertype.ParameterizedType;
 import org.hibernate.usertype.UserType;
 
-import com.my.reports.base.enums.INumericEnumType;
+import com.my.reports.base.enums.definitions.INumericEnumType;
 
 /**
  * @author MustafaS.

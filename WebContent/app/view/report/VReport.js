@@ -3,32 +3,30 @@ Ext.define('app.view.report.VReport', {
 	id : 'report',
 	alias : 'widget.report',
 	title : 'Rapor',
-	requires : ['app.view.report.VReportFieldTree',
-	            'app.view.report.VReportFieldProperties',
-	            'app.view.report.VReportTable'
-	            ],
-	
-	layout: {
-	    type: 'hbox',       
-	    align: 'stretch'
-	    	
+	requires : [ 'app.view.report.VReportFieldTree',
+			'app.view.report.VReportFieldProperties',
+			'app.view.report.VReportTable' ],
+
+	layout : {
+		type : 'border',
+		collapsible : true
 	},
-	initComponent : function(){
-		this.items = [{
+
+	initComponent : function() {
+		this.items = [ {
 			xtype : 'reportFieldTree',
-			id : 'reportFieldTree',
-			flex : 1,
-			
-			
-		},{
+			region : 'west',
+			width : '15%'
+		}, {
 			xtype : 'reportTable',
-			flex : 5			
-		},{
+			region : 'center'
+		}, {
 			xtype : 'reportFieldProperties',
-			flex : 1
-		}];
-		
+			region : 'east',
+			width  : '20%'
+		} ];
+
 		this.callParent();
 	}
-		
+
 });

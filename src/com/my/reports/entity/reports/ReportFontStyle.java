@@ -12,8 +12,8 @@ import org.hibernate.annotations.Type;
 
 import com.my.reports.base.dao.definitions.IBaseDao;
 import com.my.reports.base.entity.BaseEntity;
-import com.my.reports.base.enums.ParentType;
-import com.my.reports.base.enums.ReportFontTypes;
+import com.my.reports.entity.enums.ParentType;
+import com.my.reports.entity.enums.ReportFontTypes;
 import com.my.reports.utility.EntityUtility;
 
 /**

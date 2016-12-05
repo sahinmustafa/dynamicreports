@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.my.reports.base.spring.utils;
+package com.my.reports.base.spring;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,6 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.stereotype.Service;
 
-import com.my.reports.base.spring.config.DefaultClassPath;
 import com.my.reports.utility.DataUtility;
 
 /**

@@ -1,4 +1,4 @@
-package com.my.reports.base.spring.config;
+package com.my.reports.base.spring;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
@@ -6,8 +6,6 @@ import javax.servlet.ServletRegistration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-
-import com.my.reports.base.spring.utils.ApplicationStartupListener;
 
 /**
  * @author MustafaS.

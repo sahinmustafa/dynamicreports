@@ -1,0 +1,12 @@
+Ext.define('app.utils.FieldUtils',{
+	alias : 'widget.fieldUtils',
+	
+	TC_UZUNLUGU : 11,
+	TELEFON_UZUNLUGU : 11,
+	KISA_TEXT_ALAN_UZUNLUGU : 10,
+	TEXT_ALAN_UZUNLUGU : 100,
+	UZUN_TEXT_ALAN_UZUNLUGU : 255,
+	KOD_ALAN_UZUNLUGU : 50,
+	YIL_ALAN_UZUNLUGU : 4
+	
+});
