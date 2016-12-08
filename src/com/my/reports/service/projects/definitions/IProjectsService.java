@@ -5,6 +5,7 @@ package com.my.reports.service.projects.definitions;
 
 import org.json.JSONObject;
 
+import com.my.reports.base.entity.ServiceResult;
 import com.my.reports.entity.projects.Projects;
 
 /**
@@ -13,8 +14,8 @@ import com.my.reports.entity.projects.Projects;
  */
 public interface IProjectsService {
 
-	public JSONObject saveProjects(Projects projects);
-	public JSONObject updateProjects(Projects projects);
-	public JSONObject deleteProjects(String projectsID);
-	public JSONObject listProjects(JSONObject params);
+	public ServiceResult saveProjects(Projects projects) throws Exception;
+	public ServiceResult updateProjects(Projects projects) throws Exception;
+	public ServiceResult deleteProjects(String projectsID) throws Exception;
+	public ServiceResult listProjects(JSONObject params) throws Exception;
 }

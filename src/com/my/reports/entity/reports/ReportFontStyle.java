@@ -32,11 +32,11 @@ public class ReportFontStyle extends BaseEntity{
 	@Column(name="PARENT_OID", nullable=false, length=EntityUtility.OID_UZUNLUGU)
 	private String reportOid;
 	
-	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.base.enums.ParentType"))
+	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.entity.enums.ParentType"))
 	@Column(name="PARENT_TYPE", length=EntityUtility.KOD_ALAN_UZUNLUGU, nullable=false)
 	private ParentType parentType;
 	
-	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.base.enums.ReportFontTypes"))
+	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.entity.enums.ReportFontTypes"))
 	@Column(name="FONT_TYPE", length=EntityUtility.KOD_ALAN_UZUNLUGU, nullable=false)
 	private ReportFontTypes fontType;
 	

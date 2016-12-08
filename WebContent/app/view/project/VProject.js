@@ -1,5 +1,5 @@
 Ext.define('app.view.project.VProject',{
-	extend : 'Ext.window.Window',
+	extend : 'Ext.form.Panel',
 	alias : 'widget.project',
 	width : 300,
 	height : 500,

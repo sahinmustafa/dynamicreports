@@ -32,7 +32,7 @@ public abstract class ReportFields extends BaseEntity{
 	@Column(name="TITLE", nullable=true, length=EntityUtility.UZUN_TEXT_ALAN_UZUNLUGU)
 	private String title;
 	
-	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.base.enums.FieldType"))
+	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.entity.enums.FieldType"))
 	@Column(name="FIELD_TYPE", length=EntityUtility.KOD_ALAN_UZUNLUGU, nullable=false)
 	private FieldType fieldType;
 	

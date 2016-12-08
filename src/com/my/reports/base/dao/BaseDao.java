@@ -1,9 +1,11 @@
 package com.my.reports.base.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,6 +25,7 @@ public class BaseDao implements IBaseDao{
 	@Autowired private SessionFactory sessionFactory;
 	
 	public void save(BaseEntity entity) {
+		entity.setStatus(Status.AKTIF);
 		sessionFactory.getCurrentSession().save(entity);
 		this.flush();
 	}
@@ -48,7 +51,23 @@ public class BaseDao implements IBaseDao{
 		sessionFactory.getCurrentSession().flush();
 	}
 
-	public <T extends BaseEntity> List<T> list(Status status) {
-		return null;
+	public <T extends BaseEntity> List<T> list(SorguNesnesi<T> sorguNesnesi) throws Exception {
+		return list(sorguNesnesi, Status.AKTIF);
 	}
+	
+	public <T extends BaseEntity> List<T> list(SorguNesnesi<T> sorguNesnesi, Status status) throws Exception {
+		sorguNesnesi.sorguyaKriterEkle(status, "and status =", "status");
+		String hql =  sorguNesnesi.getHQL();
+		
+		Query query = this.sessionFactory.getCurrentSession().createQuery(hql);
+		
+		Map<String, Object> params = sorguNesnesi.getParameterList();
+		
+		for(String key : params.keySet()){
+			query.setParameter(key, params.get(key));
+		}
+		List<T> queryResult = query.list();
+		return queryResult;
+	}
+	
 }

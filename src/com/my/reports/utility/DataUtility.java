@@ -27,6 +27,22 @@ public class DataUtility {
 		return isNullOrEmpty(s);
 	}
 	
+	public static boolean isNull(Object o){
+		return o == null;
+	}
+	
+	public static boolean isNull(Object o, boolean throwable) throws Exception{
+		return isNull(o, throwable, "Boş değer");
+	}
+	
+	public static boolean isNull(Object o, boolean throwable, String message) throws Exception{
+		if(throwable && isNull(o)){
+			throw new Exception(message);
+		}
+		
+		return isNull(o);
+	}
+	
 	public static boolean isNullOrEmpty(List<?> list){
 		return list != null ? list.size() == 0 : true;
 	}

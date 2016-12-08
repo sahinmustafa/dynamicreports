@@ -8,7 +8,7 @@ package com.my.reports.utility;
  *
  */
 public class EntityUtility {
-	public static final int OID_UZUNLUGU = 19;
+	public static final int OID_UZUNLUGU = 32;
     public static final int TARIH_UZUNLUGU = 8;
     public static final int TARIH_SAAT_UZUNLUGU = 14;
     public static final int TC_UZUNLUGU = 11;

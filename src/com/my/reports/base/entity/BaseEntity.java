@@ -7,12 +7,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.json.JSONObject;
@@ -32,11 +34,13 @@ public abstract class BaseEntity implements Serializable{
 	private static final long serialVersionUID = 9066792246466385491L;
 	
 	@Id
+	@GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid")
 	@Column(name="OID", length = EntityUtility.OID_UZUNLUGU, nullable=false)
 	private String oid;
 	
 	@Type(type = "com.my.reports.utility.EnumUserType", parameters = @Parameter(name = "type", value = "com.my.reports.base.enums.Status"))
-	@Column(name="SILINMIS", length=EntityUtility.BOOLEAN_ALAN_UZUNLUGU, nullable=false)
+	@Column(name="STATUS", length=EntityUtility.BOOLEAN_ALAN_UZUNLUGU, nullable=false)
 	private Status status;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -54,11 +58,15 @@ public abstract class BaseEntity implements Serializable{
 	private String updateUser;
 	
 	
-	public abstract void entityKaydet(BaseEntity parent, IBaseDao dao);
-	public abstract void entityGuncelle(BaseEntity parent, IBaseDao dao);
-	public abstract void entitySil(BaseEntity parent, IBaseDao dao);
-	public abstract void altSinifGetir(BaseEntity parent, IBaseDao dao);
-	public abstract void ustSinifGetir(BaseEntity parent, IBaseDao dao);
+	public BaseEntity(){
+		this.setCreateUser("MS");
+	}
+	
+	public abstract void entityKaydet(BaseEntity parent, IBaseDao dao) throws Exception;
+	public abstract void entityGuncelle(BaseEntity parent, IBaseDao dao) throws Exception;
+	public abstract void entitySil(BaseEntity parent, IBaseDao dao) throws Exception;
+	public abstract void altSinifGetir(BaseEntity parent, IBaseDao dao) throws Exception;
+	public abstract void ustSinifGetir(BaseEntity parent, IBaseDao dao) throws Exception;
 	
 	public BaseEntity fromJSON(Class<? extends BaseEntity> clazz, JSONObject json) throws Exception{
 		return new ObjectMapper().readValue(json.toString(), clazz);

@@ -19,20 +19,26 @@ Ext.define('app.controller.project.CProject',{
 	},
 	     
     kaydet : function(){
+    	debugger;
     	var params = {
-    		project : this.getProject().getForm().getValues()	
+    		projects : {
+    			projectName : this.getProject().getForm().findField("projectName").getValue(),
+    			databaseSettings : {
+    				userName : this.getProject().getForm().findField("userName").getValue(),
+    				password : this.getProject().getForm().findField("password").getValue(),
+    				ip : this.getProject().getForm().findField("ip").getValue(),
+    				port : this.getProject().getForm().findField("port").getValue()
+    			}
+    		}
     	};
+    	var thizz = this;
     	this.call('projectsService_saveProjects', params,
     			function(resp){
-    				Ext.msg.alert('Proje başarı ile kayıt edildi');
-    				this.getProject().close();
+    				Ext.Msg.alert('Proje başarı ile kayıt edildi');
+    				thizz.getProject().up('window').close()
     			},function(resp){
-    				Ext.MessageBox.show({
-    					title : 'Hata',
-    					msg  : 'Proje kayıt sırasında hata oluştu!',
-    					buttons : Ext.MessageBox.OK
-    				});
-    			});
+    				
+    			}, true);
     },
     
     temizle : function(){

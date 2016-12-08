@@ -3,8 +3,6 @@
  */
 package com.my.reports.base.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.my.reports.base.controller.BaseController;
 import com.my.reports.base.entity.definitions.IParameters;
 import com.my.reports.base.enums.ReferenceData;
-import com.my.reports.base.utility.ParametreUtil;
 import com.my.reports.utility.DataUtility;
 
 /**
@@ -25,7 +22,7 @@ import com.my.reports.utility.DataUtility;
 @Service
 public class ReferenceDataService extends BaseService {
 
-	@Autowired private BaseController serviceCaller;
+	//@Autowired private BaseController serviceCaller;
 	
 	private static Map<String, ReferenceData> params = null;
 
@@ -51,7 +48,7 @@ public class ReferenceDataService extends BaseService {
 		} else {
 			JSONObject params = new JSONObject();
 			params.put("clazz", ref.getClazz());
-			return serviceCaller.callService(ref.getServiceName(), params);
+			return null; //serviceCaller.callService(ref.getServiceName(), params);
 		}
 	}
 

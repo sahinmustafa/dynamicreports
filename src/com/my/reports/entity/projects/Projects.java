@@ -13,6 +13,7 @@ import javax.persistence.Transient;
 import com.my.reports.base.dao.definitions.IBaseDao;
 import com.my.reports.base.entity.BaseEntity;
 import com.my.reports.entity.reports.ReportTemplate;
+import com.my.reports.utility.DataUtility;
 
 /**
  * @author MustafaS.
@@ -33,12 +34,12 @@ public class Projects extends BaseEntity{
 	@Transient
 	private List<ReportTemplate> reportTemplate;
 	
-	/* (non-Javadoc)
-	 * @see com.my.reports.base.entity.BaseEntity#entityKaydet(com.my.reports.base.entity.BaseEntity, com.my.reports.base.dao.definitions.IBaseDao)
-	 */
 	@Override
-	public void entityKaydet(BaseEntity parent, IBaseDao dao) {
-		// TODO Auto-generated method stub
+	public void entityKaydet(BaseEntity parent, IBaseDao dao) throws Exception {
+		DataUtility.isNullOrEmpty(this.getProjectName(), true, "Proje adını boş bırakamazsınız.");
+
+		dao.save(this);
+		databaseSettings.entityKaydet(this, dao);
 		
 	}
 
