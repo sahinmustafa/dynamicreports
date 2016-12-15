@@ -25,6 +25,12 @@ public class DatabaseSettings extends BaseEntity{
 	@Column(name="FK_PROJECT_OID", length=EntityUtility.OID_UZUNLUGU, nullable=false)
 	private String projectOid;
 	
+	@Column(name="DATABASE_NAME", length=EntityUtility.TEXT_ALAN_UZUNLUGU, nullable=true)
+	private String databaseName;
+	
+	@Column(name="DATABASE_TYPE", length=EntityUtility.TEXT_ALAN_UZUNLUGU, nullable=true)
+	private String databaseType;
+	
 	@Column(name="USER_NAME", length=EntityUtility.TEXT_ALAN_UZUNLUGU, nullable=false)
 	private String userName;
 	
@@ -111,6 +117,22 @@ public class DatabaseSettings extends BaseEntity{
 
 	public void setPort(int port) {
 		this.port = port;
+	}
+
+	public String getDatabaseName() {
+		return databaseName;
+	}
+
+	public void setDatabaseName(String databaseName) {
+		this.databaseName = databaseName;
+	}
+
+	public String getDatabaseType() {
+		return databaseType;
+	}
+
+	public void setDatabaseType(String databaseType) {
+		this.databaseType = databaseType;
 	}
 
 	

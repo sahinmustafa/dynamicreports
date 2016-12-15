@@ -9,6 +9,9 @@ Ext.define('app.controller.menu.CAnaMenu', {
 		this.control({
 			'anaMenu menuitem[action=yeni]' : {
 				click : this.yeni
+			},
+			'anaMenu menuitem[action=json]' : {
+				click : this.jsonSource
 			}
 		});
 	},
@@ -19,6 +22,19 @@ Ext.define('app.controller.menu.CAnaMenu', {
 			requires : [ 'app.view.project.VProject' ],
 			items : [ {
 				xtype : 'project',
+				padding : '5px'	
+			} ]
+		});
+		w.show();
+	},
+	
+	jsonSource : function(){
+		var w = new Ext.Window({
+			layout : 'fit',
+			title :  'JSON Veri Kaynağı',
+			requires : [ 'app.view.datasources.VJsonDataSource' ],
+			items : [ {
+				xtype : 'jsonDataSource',
 				padding : '5px'	
 			} ]
 		});

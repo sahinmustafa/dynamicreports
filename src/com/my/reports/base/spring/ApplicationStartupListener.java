@@ -15,6 +15,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.stereotype.Service;
 
+import com.my.reports.base.enums.ReferenceData;
+import com.my.reports.base.enums.definitions.IReferenceData;
 import com.my.reports.utility.DataUtility;
 
 /**
@@ -26,19 +28,42 @@ public class ApplicationStartupListener implements ApplicationListener<ContextRe
 
 	private static final Logger LOGGER = Logger.getLogger(ApplicationStartupListener.class);
 	private static Map<String, String> serviceMap; 
+	private static Map<String, IReferenceData> refDataMap;
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent params) {
 		System.out.println("onApplicationEvent");
-		createServiceMap();
+		
+		createServiceMap(DefaultClassPath.SERVICE_PATH);
+		createServiceMap(DefaultClassPath.BASE_PATH + ".service");
+		
+		createRefDataMap(ReferenceData.class);
 	}
 	
-	private void createServiceMap(){
-		serviceMap = new HashMap<String, String>();
+	private void createRefDataMap(Class<? extends IReferenceData> refDataClass){
+		
+		if(DataUtility.isNull(refDataMap))
+			refDataMap = new HashMap<String, IReferenceData>();
+		
+		for(IReferenceData refData : refDataClass.getEnumConstants()){
+			refDataMap.put(refData.getRefData(), refData);
+		}
+	}
+	
+	public static IReferenceData getReferenceDataFromRefData(String refData) throws Exception {
+		IReferenceData referenceData = refDataMap.get(refData);
+		DataUtility.isNull(referenceData, true, "Geçersiz referans adı");
+		return referenceData;
+	}
+	
+	private void createServiceMap(String path){
+		
+		if(serviceMap == null)
+			serviceMap = new HashMap<String, String>();
 		
 		ClassPathScanningCandidateComponentProvider scanning = new ClassPathScanningCandidateComponentProvider(true);
 		scanning.addIncludeFilter(new AnnotationTypeFilter(Service.class));
-		Set<BeanDefinition> beans = scanning.findCandidateComponents(DefaultClassPath.SERVICE_PATH);
+		Set<BeanDefinition> beans = scanning.findCandidateComponents(path);
 		for(BeanDefinition bean : beans ){
 			String className = bean.getBeanClassName();
 			String simpleName = DefaultClassPath.getSimpleClassName(className);

@@ -3,8 +3,7 @@
  */
 package com.my.reports.service.reports;
 
-import org.json.JSONObject;
-
+import com.my.reports.base.entity.ServiceResult;
 import com.my.reports.base.service.BaseService;
 import com.my.reports.entity.reports.ReportTemplate;
 import com.my.reports.utility.DataUtility;
@@ -15,7 +14,7 @@ import com.my.reports.utility.DataUtility;
  */
 public class ReportService extends BaseService{
 
-	public JSONObject raporKaydet(ReportTemplate template) throws Exception{
+	public ServiceResult raporKaydet(ReportTemplate template) throws Exception{
 		if(template == null)
 			return null;
 		
@@ -27,4 +26,5 @@ public class ReportService extends BaseService{
 		
 		return null;
 	}
+	
 }

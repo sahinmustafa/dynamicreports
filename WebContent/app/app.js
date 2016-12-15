@@ -3,10 +3,11 @@ Ext.application({
 	name : 'app',
 	mainView: 'app.view.Viewport',
 	controllers : ['CBaseController', 
-	               'CMainFrame', 
-	               'report.CSQLQuery',
+	               'CMainFrame',
 	               'menu.CAnaMenu',
 	               'project.CProject',
-	               'report.CReportFieldTree'],
+	               'report.CSQLQuery',
+	               'report.CReportFieldTree',
+	               'datasources.CDataSource'],
 	autoCreateViewport : true
 });

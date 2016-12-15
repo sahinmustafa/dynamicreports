@@ -162,13 +162,13 @@ public class BaseController {
 		} else {
 			returnValue.put("data", o);
 		}
-
+		JSONArray messages = new JSONArray();
 		if (!DataUtility.isNull(serviceResult.getMessages())) {
-			JSONArray messages = new JSONArray();
 			for (String message : serviceResult.getMessages())
 				messages.put(message);
-			returnValue.put("msg", messages);
+			
 		}
+		returnValue.put("msg", messages);
 
 		return returnValue;
 	}

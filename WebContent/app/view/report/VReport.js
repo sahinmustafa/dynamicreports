@@ -5,7 +5,8 @@ Ext.define('app.view.report.VReport', {
 	title : 'Rapor',
 	requires : [ 'app.view.report.VReportFieldTree',
 			'app.view.report.VReportFieldProperties',
-			'app.view.report.VReportTable' ],
+			'app.view.report.VReportTable',
+			'app.view.report.VReportSearchPanel' ],
 
 	layout : {
 		type : 'border',
@@ -18,12 +19,26 @@ Ext.define('app.view.report.VReport', {
 			region : 'west',
 			width : '15%'
 		}, {
-			xtype : 'reportTable',
-			region : 'center'
+			xtype : 'panel',
+			region : 'center',
+			layout: {
+			    type: 'vbox',
+			    align : 'stretch',
+			    pack  : 'start',
+			},
+			items : [ {
+				xtype : 'reportSearchPanel',
+				flex  : 1
+			},{
+				xtype  :'reportTable',
+				title  : 'Rapor Tablo',
+				collapsible : true,
+				flex  : 2
+			} ]
 		}, {
 			xtype : 'reportFieldProperties',
 			region : 'east',
-			width  : '20%'
+			width : '20%'
 		} ];
 
 		this.callParent();

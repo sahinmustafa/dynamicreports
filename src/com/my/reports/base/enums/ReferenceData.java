@@ -6,13 +6,15 @@ package com.my.reports.base.enums;
 import com.my.reports.base.entity.definitions.IParameters;
 import com.my.reports.base.enums.definitions.IReferenceData;
 import com.my.reports.entity.enums.FieldType;
+import com.my.reports.entity.enums.ReportFontTypes;
 
 /**
  * @author MustafaS.
  *
  */
 public enum ReferenceData implements IReferenceData{
-	FIELD_TYPE("RF_FILED_TYPE", FieldType.class, null);
+	FIELD_TYPE("RF_FIELD_TYPE", FieldType.class, null),
+	FONT_TYPE("RF_FONT_TYPE", ReportFontTypes.class, null);
 	
 	private static final String DEFAULT_PARAMETRE_SERVIS = "referenceDataService_fillRefData";
 	

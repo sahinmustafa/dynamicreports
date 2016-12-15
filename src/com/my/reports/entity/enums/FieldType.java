@@ -48,7 +48,7 @@ public enum FieldType implements INumericEnumType, IParameters{
 
 	@Override
 	public String getText() {
-		return this.getText();
+		return this.value();
 	}
 
 	@Override

@@ -2,6 +2,7 @@ Ext.define('app.view.report.VReportTable', {
 	extend : 'Ext.grid.Panel',
 	id : 'reportTable',
 	alias : 'widget.reportTable',
+	autoScroll : true,
 	
 	columns : [{
 		header : 'ID',

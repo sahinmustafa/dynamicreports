@@ -20,6 +20,21 @@ Ext.define('app.view.menu.VAnaMenu',{
 				text : 'Kapat',
 				action : 'kapat'
 			}]
+		},{
+			text : 'Veri Kaynağı',
+			menu : [{
+				text : 'JSON',
+				action : 'json'
+			},{
+				text : 'Excel',
+				action : 'excel'
+			},{
+				text : 'XML',
+				action : 'xml'
+			},{
+				text : 'Veri Tabanı',
+				action : 'database'
+			}]
 		}];
 		
 		this.callParent();

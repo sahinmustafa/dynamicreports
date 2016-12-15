@@ -3,16 +3,14 @@
  */
 package com.my.reports.base.service;
 
-import java.util.Map;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.my.reports.base.controller.BaseController;
+import com.my.reports.base.entity.ServiceResult;
 import com.my.reports.base.entity.definitions.IParameters;
-import com.my.reports.base.enums.ReferenceData;
+import com.my.reports.base.enums.definitions.IReferenceData;
+import com.my.reports.base.spring.ApplicationStartupListener;
 import com.my.reports.utility.DataUtility;
 
 /**
@@ -24,12 +22,11 @@ public class ReferenceDataService extends BaseService {
 
 	//@Autowired private BaseController serviceCaller;
 	
-	private static Map<String, ReferenceData> params = null;
 
-	public JSONObject fillRefData(String refData) throws Exception {
+	public ServiceResult fillRefData(String refData) throws Exception {
 		DataUtility.isNullOrEmpty(refData, true, "Referens Data değeri boş olamaz!");
 
-		ReferenceData ref = ReferenceDataService.params.get(refData);
+		IReferenceData ref = ApplicationStartupListener.getReferenceDataFromRefData(refData);
 		Class<? extends IParameters> clazz = ref.getClazz();
 
 		JSONArray arr = new JSONArray();
@@ -42,8 +39,7 @@ public class ReferenceDataService extends BaseService {
 				
 				arr.put(object);
 			}
-			JSONObject result = new JSONObject();
-			result.put("data", arr);
+			ServiceResult result = new ServiceResult(arr);
 			return result;
 		} else {
 			JSONObject params = new JSONObject();
@@ -56,13 +52,6 @@ public class ReferenceDataService extends BaseService {
 		// TODO Nesne sorgulama yazılacak
 		return null;
 	}
-	
-	public static Map<String, ReferenceData> getParams() {
-		return params;
-	}
 
-	public static void setParams(Map<String, ReferenceData> params) {
-		ReferenceDataService.params = params;
-	}
 
 }
