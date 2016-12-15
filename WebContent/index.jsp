@@ -8,7 +8,7 @@
 	href="ext-4.2.1.883/resources/ext-theme-gray/ext-theme-gray-all.css">
 <script type="text/javascript" src="ext-4.2.1.883/ext-all-debug.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
-<title>Insert title here</title>
+<title>Hasan was here :)</title>
 </head>
 <body>
 	
