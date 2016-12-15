@@ -1,6 +1,6 @@
 Ext.define('app.controller.report.CReportFieldTree', {
 	extend : 'app.controller.CBaseController',
-
+	dataSource : [],
 	views : [ 'report.VReportFieldTree', 'report.VReport', 'report.VReportFieldProperties',
 			'report.VReportTable', 'report.VReportSearchPanel' ],
 	stores : [ 'app.store.report.SReportFieldTree' ],
@@ -194,11 +194,27 @@ Ext.define('app.controller.report.CReportFieldTree', {
 
 	reportSearch : function(){
 		var dataSource = this.dataSource;
+		var searchValues = this.getReportSearchPanel().getForm().getValues();
 		
-		if(dataSource == null)
+		if(dataSource == null || searchValues == null)
 			return ;
 		
-		debugger;
+		var result = [];
+		for(var i = 0 ; i < dataSource.length ; i ++){
+			var isAdd = true;
+			for(var key in searchValues){
+				if(searchValues[key] == "")
+					continue;
+				if(dataSource[i][key] != searchValues[key]){
+					isAdd = false;
+					break;
+				}
+			}
+			if(isAdd)
+				result.push(dataSource[i]);
+		}
+		this.getReportTable().getStore().add(result);
+		
 	}
 
 });
