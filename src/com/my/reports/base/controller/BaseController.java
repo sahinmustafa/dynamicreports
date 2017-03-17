@@ -91,7 +91,7 @@ public class BaseController {
 		LOGGER.error(clazz.getSimpleName() + " servis sınıfı içerisinde " + methodName + " isimli metod bulunamadı.");
 		throw new Exception();
 	}
-
+ 
 	private Object[] getMethodParams(Method method, JSONObject params) throws Exception {
 		Parameter[] methodParameters = method.getParameters();
 		Object[] methodParam = new Object[methodParameters.length];

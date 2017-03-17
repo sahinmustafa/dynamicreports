@@ -95,6 +95,10 @@ Ext.define('app.controller.report.CReportFieldTree', {
 				flex : 1,
 				autoSizeColumn : true
 			});
+			debugger;
+			var fields = grid.getStore().model.getFields();
+			fields.push(items[i].data.text);
+			grid.getStore().model.setFields(fields);
 			grid.headerCt.insert(grid.columns.length - 1, column);
 		}
 
